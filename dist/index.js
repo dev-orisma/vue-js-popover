@@ -431,7 +431,9 @@ var prepareBinding = function prepareBinding(binding) {
       value = binding.value;
 
   var mods = Object.keys(modifiers || {});
-
+  if (typeof value !== 'undefined') {
+    arg = value;
+  }
   return {
     name: arg,
     position: mods[0] || defaultPosition,
@@ -518,7 +520,7 @@ exports = module.exports = __webpack_require__(8)();
 
 
 // module
-exports.push([module.i, ".vue-popover{display:block;position:absolute;background:#fff;box-shadow:0 4px 20px 0 rgba(52,73,94,.2);padding:5px;border-radius:5px;z-index:998}.vue-popover:before{display:block;position:absolute;width:0;height:0;content:\"\"}.vue-popover.dropdown-position-bottom:before{border-bottom:6px solid #fff;top:-6px;filter:drop-shadow(0 -2px 2px rgba(52,73,94,.1))}.vue-popover.dropdown-position-bottom:before,.vue-popover.dropdown-position-top:before{border-left:6px solid transparent;border-right:6px solid transparent;left:calc(50% - 6px)}.vue-popover.dropdown-position-top:before{border-top:6px solid #fff;bottom:-6px;filter:drop-shadow(0 2px 2px rgba(52,73,94,.1))}.vue-popover.dropdown-position-left:before{border-left:6px solid #fff;right:-6px;filter:drop-shadow(2px 0 2px rgba(52,73,94,.1))}.vue-popover.dropdown-position-left:before,.vue-popover.dropdown-position-right:before{border-top:6px solid transparent;border-bottom:6px solid transparent;top:calc(50% - 6px)}.vue-popover.dropdown-position-right:before{border-right:6px solid #fff;left:-6px;filter:drop-shadow(-2px 0 2px rgba(52,73,94,.1))}", ""]);
+exports.push([module.i, ".vue-popover{display:block;position:absolute;background:#fff;box-shadow:0 4px 20px 0 rgba(52,73,94,.2);padding:5px;border-radius:5px;z-index:998}.vue-popover:before{display:block;position:absolute;width:0;height:0;content:\"\"}.vue-popover.dropdown-position-bottom:before{border-bottom:6px solid #fff;top:-6px;-webkit-filter:drop-shadow(0 -2px 2px rgba(52,73,94,.1));filter:drop-shadow(0 -2px 2px rgba(52,73,94,.1))}.vue-popover.dropdown-position-bottom:before,.vue-popover.dropdown-position-top:before{border-left:6px solid transparent;border-right:6px solid transparent;left:calc(50% - 6px)}.vue-popover.dropdown-position-top:before{border-top:6px solid #fff;bottom:-6px;-webkit-filter:drop-shadow(0 2px 2px rgba(52,73,94,.1));filter:drop-shadow(0 2px 2px rgba(52,73,94,.1))}.vue-popover.dropdown-position-left:before{border-left:6px solid #fff;right:-6px;-webkit-filter:drop-shadow(2px 0 2px rgba(52,73,94,.1));filter:drop-shadow(2px 0 2px rgba(52,73,94,.1))}.vue-popover.dropdown-position-left:before,.vue-popover.dropdown-position-right:before{border-top:6px solid transparent;border-bottom:6px solid transparent;top:calc(50% - 6px)}.vue-popover.dropdown-position-right:before{border-right:6px solid #fff;left:-6px;-webkit-filter:drop-shadow(-2px 0 2px rgba(52,73,94,.1));filter:drop-shadow(-2px 0 2px rgba(52,73,94,.1))}", ""]);
 
 // exports
 

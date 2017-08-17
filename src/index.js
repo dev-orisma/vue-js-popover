@@ -7,7 +7,9 @@ const defaultPosition = 'bottom'
 const prepareBinding = (binding) => {
   let { arg, modifiers, value } = binding
   let mods = Object.keys(modifiers || {})
-
+  if(typeof(value) !== 'undefined'){
+  	arg = value
+  }
   return {
     name: arg,
     position: mods[0] || defaultPosition,
