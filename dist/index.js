@@ -357,9 +357,14 @@ exports.default = {
         y += direction[1] * pointerSize;
       }
 
+      var top = centerY - y;
+      if (typeof target.getAttribute("fixed_position") != "undefined") {
+        top = trRect.top + parseInt(target.getAttribute("fixed_position"));
+      }
+
       return {
         left: centerX + x,
-        top: centerY - y
+        top: top
       };
     }
   }

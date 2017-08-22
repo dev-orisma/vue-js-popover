@@ -144,8 +144,8 @@ export default {
       let shiftY = 0.5 * (ddRect.height + trRect.height)
 
       // Center of the target element
-      let centerX = offsetLeft - 0.5 * (ddRect.width - trRect.width) 
-      let centerY = offsetTop + trRect.height - shiftY 
+      let centerX = offsetLeft - 0.5 * (ddRect.width - trRect.width)
+      let centerY = offsetTop + trRect.height - shiftY
 
       // let anchorX = direction[0] * this.anchor
       // let anchorY = direction[0] * this.anchor
@@ -160,9 +160,14 @@ export default {
         y += direction[1] * pointerSize
       }
 
+      var top = centerY - y
+      if(typeof(target.getAttribute("fixed_position")) != "undefined"){
+      		top = trRect.top + parseInt(target.getAttribute("fixed_position"))
+      }
+
       return {
         left: centerX + x,
-        top: centerY - y
+        top: top
       }
     }
   }
@@ -172,6 +177,17 @@ export default {
 <style lang="scss">
 $pointer-size: 6px;
 
+.vue-popover-panel {
+    position: fixed;
+    box-sizing: border-box;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    opacity: 1;
+}
 .vue-popover {
   display: block;
   position: absolute;
