@@ -160,16 +160,31 @@ export default {
         y += direction[1] * pointerSize
       }
 
-      var top = centerY - y
-      if(typeof(target.getAttribute("fixed_position")) != "undefined"){
-      		top = trRect.top + parseInt(target.getAttribute("fixed_position"))
+      var top = centerY - y;
+      if (typeof target.getAttribute("fixed_position") != "undefined") {
+      	var absolutePos = this.getAbsolutePosition(target)
+        top = absolutePos.top + parseInt(target.getAttribute("fixed_position"));
       }
 
       return {
         left: centerX + x,
         top: top
       }
-    }
+    },
+    getAbsolutePosition(el) {
+	  var top = 0, left = 0;
+	    do {
+	        top += el.offsetTop  || 0;
+	        left += el.offsetLeft || 0;
+	        el = el.offsetParent;
+	    } while(el);
+
+	    return {
+	        top: top,
+	        left: left
+	    };
+	}
+
   }
 }
 </script>

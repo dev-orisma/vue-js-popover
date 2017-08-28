@@ -359,12 +359,27 @@ exports.default = {
 
       var top = centerY - y;
       if (typeof target.getAttribute("fixed_position") != "undefined") {
-        top = trRect.top + parseInt(target.getAttribute("fixed_position"));
+        var absolutePos = this.getAbsolutePosition(target);
+        top = absolutePos.top + parseInt(target.getAttribute("fixed_position"));
       }
 
       return {
         left: centerX + x,
         top: top
+      };
+    },
+    getAbsolutePosition: function getAbsolutePosition(el) {
+      var top = 0,
+          left = 0;
+      do {
+        top += el.offsetTop || 0;
+        left += el.offsetLeft || 0;
+        el = el.offsetParent;
+      } while (el);
+
+      return {
+        top: top,
+        left: left
       };
     }
   }
@@ -525,7 +540,7 @@ exports = module.exports = __webpack_require__(8)();
 
 
 // module
-exports.push([module.i, ".vue-popover{display:block;position:absolute;background:#fff;box-shadow:0 4px 20px 0 rgba(52,73,94,.2);padding:5px;border-radius:5px;z-index:998}.vue-popover:before{display:block;position:absolute;width:0;height:0;content:\"\"}.vue-popover.dropdown-position-bottom:before{border-bottom:6px solid #fff;top:-6px;-webkit-filter:drop-shadow(0 -2px 2px rgba(52,73,94,.1));filter:drop-shadow(0 -2px 2px rgba(52,73,94,.1))}.vue-popover.dropdown-position-bottom:before,.vue-popover.dropdown-position-top:before{border-left:6px solid transparent;border-right:6px solid transparent;left:calc(50% - 6px)}.vue-popover.dropdown-position-top:before{border-top:6px solid #fff;bottom:-6px;-webkit-filter:drop-shadow(0 2px 2px rgba(52,73,94,.1));filter:drop-shadow(0 2px 2px rgba(52,73,94,.1))}.vue-popover.dropdown-position-left:before{border-left:6px solid #fff;right:-6px;-webkit-filter:drop-shadow(2px 0 2px rgba(52,73,94,.1));filter:drop-shadow(2px 0 2px rgba(52,73,94,.1))}.vue-popover.dropdown-position-left:before,.vue-popover.dropdown-position-right:before{border-top:6px solid transparent;border-bottom:6px solid transparent;top:calc(50% - 6px)}.vue-popover.dropdown-position-right:before{border-right:6px solid #fff;left:-6px;-webkit-filter:drop-shadow(-2px 0 2px rgba(52,73,94,.1));filter:drop-shadow(-2px 0 2px rgba(52,73,94,.1))}", ""]);
+exports.push([module.i, ".vue-popover-panel{position:fixed;box-sizing:border-box;left:0;top:0;width:100vw;height:100vh;background:rgba(0,0,0,.2);z-index:999;opacity:1}.vue-popover{display:block;position:absolute;background:#fff;box-shadow:0 4px 20px 0 rgba(52,73,94,.2);padding:5px;border-radius:5px;z-index:998}.vue-popover:before{display:block;position:absolute;width:0;height:0;content:\"\"}.vue-popover.dropdown-position-bottom:before{border-bottom:6px solid #fff;top:-6px;-webkit-filter:drop-shadow(0 -2px 2px rgba(52,73,94,.1));filter:drop-shadow(0 -2px 2px rgba(52,73,94,.1))}.vue-popover.dropdown-position-bottom:before,.vue-popover.dropdown-position-top:before{border-left:6px solid transparent;border-right:6px solid transparent;left:calc(50% - 6px)}.vue-popover.dropdown-position-top:before{border-top:6px solid #fff;bottom:-6px;-webkit-filter:drop-shadow(0 2px 2px rgba(52,73,94,.1));filter:drop-shadow(0 2px 2px rgba(52,73,94,.1))}.vue-popover.dropdown-position-left:before{border-left:6px solid #fff;right:-6px;-webkit-filter:drop-shadow(2px 0 2px rgba(52,73,94,.1));filter:drop-shadow(2px 0 2px rgba(52,73,94,.1))}.vue-popover.dropdown-position-left:before,.vue-popover.dropdown-position-right:before{border-top:6px solid transparent;border-bottom:6px solid transparent;top:calc(50% - 6px)}.vue-popover.dropdown-position-right:before{border-right:6px solid #fff;left:-6px;-webkit-filter:drop-shadow(-2px 0 2px rgba(52,73,94,.1));filter:drop-shadow(-2px 0 2px rgba(52,73,94,.1))}", ""]);
 
 // exports
 
